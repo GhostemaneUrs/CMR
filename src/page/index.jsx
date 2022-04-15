@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import Home from "./Home";
+import Client from "./Client";
+import NewClient from "./Client/NewClient";
+import EditClient from "./Client/EditClient";
+import { Routes, Route } from "react-router-dom";
 
-const index = () => {
+const AppRouter = () => {
   return (
-    <div>index</div>
-  )
-}
+    <Routes>
+      <Route path="/client" element={<Home />}>
+        <Route index element={<Client />} />
+        <Route path="new" element={<NewClient />} />
+        <Route path="edit/:id" element={<EditClient />} />
+      </Route>
+    </Routes>
+  );
+};
 
-export default index
+export default AppRouter;
