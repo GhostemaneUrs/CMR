@@ -5,9 +5,9 @@ const index = () => {
   const location = useLocation();
   const urlCurrent = location.pathname;
   return (
-    <div className="md:flex md:min-h-screen">
-      <div className="md:w-1/4 bg-blue-900 px-5 py-10">
-        <h2 className="text-4xl md:text-2xl lg:text-4xl font-black text-center text-white">
+    <div className="lg:flex lg:min-h-screen">
+      <div className="lg:w-1/4 bg-blue-900 px-5 py-10">
+        <h2 className="text-4xl font-black text-center text-white">
           CRM - Client
         </h2>
         <div className="mt-10">
@@ -29,7 +29,7 @@ const index = () => {
           </Link>
         </div>
       </div>
-      <div className="md:w-3/4 p-10">
+      <div className="lg:w-3/4 p-10 scroll">
         <Outlet />
       </div>
     </div>
