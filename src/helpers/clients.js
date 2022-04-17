@@ -22,6 +22,52 @@ export const addClient = async (values) => {
     });
 };
 
+export const editClient = async (id, values) => {
+  await axios
+    .put(`http://localhost:4000/clients/${id}`, values)
+    .then((res) => {
+      Swal.fire({
+        timer: 1500,
+        icon: "success",
+        title: "success",
+        showConfirmButton: false,
+        text: "Client edited successfully",
+      });
+    })
+    .catch((err) => {
+      Swal.fire({
+        timer: 1500,
+        icon: "error",
+        title: "Error",
+        showConfirmButton: false,
+        text: "There was an error editing the client",
+      });
+    });
+};
+
+export const deleteClient = async (id) => {
+  await axios
+    .delete(`http://localhost:4000/clients/${id}`)
+    .then((res) => {
+      Swal.fire({
+        timer: 1500,
+        icon: "success",
+        title: "success",
+        showConfirmButton: false,
+        text: "Client deleted successfully",
+      });
+    })
+    .catch((err) => {
+      Swal.fire({
+        timer: 1500,
+        icon: "error",
+        title: "Error",
+        showConfirmButton: false,
+        text: "There was an error deleting the client",
+      });
+    });
+};
+
 export const getSpecificClient = async (id, setClient, setLoading) => {
   setLoading(true);
   await axios
@@ -32,11 +78,6 @@ export const getSpecificClient = async (id, setClient, setLoading) => {
     })
     .catch((err) => {
       setLoading(false);
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "There was an error getting the client",
-      });
     });
 };
 
