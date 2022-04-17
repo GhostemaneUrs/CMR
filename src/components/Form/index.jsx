@@ -2,9 +2,12 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Alert from "../Alert";
+import { addClient } from "../../helpers/clients";
+import { useNavigate } from "react-router-dom";
 
 const index = () => {
   /* Validations */
+  const navigate = useNavigate();
   const newClientValues = Yup.object().shape({
     name: Yup.string()
       .min(3, "The name is too short")
@@ -13,13 +16,17 @@ const index = () => {
     business: Yup.string().required(),
     email: Yup.string().email().required(),
     phone: Yup.number()
+      .max(10, "The phone number is too long")
       .positive()
       .integer()
       .typeError("The phone number is not valid"),
   });
+
   const handleSubmit = (values) => {
-    console.log(values);
+    addClient(values);
+    navigate("/client");
   };
+
   return (
     <div className="bg-white px-5 py-10 rounded-md shadow-md lg:w-3/5 m-auto">
       <h1 className="text-gray-600 font-bold text-2xl uppercase text-center mb-5">
@@ -34,8 +41,9 @@ const index = () => {
           phone: "",
           notes: "",
         }}
-        onSubmit={async (values) => {
+        onSubmit={(values, { resetForm }) => {
           handleSubmit(values);
+          resetForm();
         }}
         validationSchema={newClientValues}
       >
@@ -116,7 +124,7 @@ const index = () => {
             <input
               type="submit"
               value="Adding client"
-              className="w-full bg-blue-800 p-3 uppercase text-white text-lg"
+              className="w-full bg-blue-800 p-3 uppercase text-white text-lg cursor-pointer"
             />
           </Form>
         )}
