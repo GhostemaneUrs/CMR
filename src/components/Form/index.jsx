@@ -2,10 +2,10 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Alert from "../Alert";
-import { addClient } from "../../helpers/clients";
+import { addClient, editClient } from "../../helpers/clients";
 import { useNavigate } from "react-router-dom";
 
-const index = () => {
+const index = ({ client }) => {
   /* Validations */
   const navigate = useNavigate();
   const newClientValues = Yup.object().shape({
@@ -23,24 +23,29 @@ const index = () => {
   });
 
   const handleSubmit = (values) => {
-    addClient(values);
+    if (client.id) {
+      editClient(client.id, values);
+    } else {
+      addClient(values);
+    }
     navigate("/client");
   };
 
   return (
     <div className="bg-white px-5 py-10 rounded-md shadow-md lg:w-3/5 m-auto">
       <h1 className="text-gray-600 font-bold text-2xl uppercase text-center mb-5">
-        Adding a new client
+        {`${client.id ? "Editing your client" : "Adding a new client"}`}
       </h1>
 
       <Formik
         initialValues={{
-          name: "",
-          business: "",
-          email: "",
-          phone: "",
-          notes: "",
+          name: client?.name ?? "",
+          business: client?.business ?? "",
+          email: client?.email ?? "",
+          phone: client?.phone ?? "",
+          notes: client?.notes ?? "",
         }}
+        enableReinitialize={true}
         onSubmit={(values, { resetForm }) => {
           handleSubmit(values);
           resetForm();
@@ -123,7 +128,7 @@ const index = () => {
 
             <input
               type="submit"
-              value="Adding client"
+              value={`${client.id ? "Edit client" : "Add client"}`}
               className="w-full bg-blue-800 p-3 uppercase text-white text-lg cursor-pointer"
             />
           </Form>
@@ -131,6 +136,10 @@ const index = () => {
       </Formik>
     </div>
   );
+};
+
+index.defaultProps = {
+  client: {},
 };
 
 export default index;
