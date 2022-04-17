@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getClients } from "../../helpers/clients";
+import { deleteClient, getClients } from "../../helpers/clients";
 import MoonLoader from "react-spinners/ClipLoader";
 import { RiFileEditFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
@@ -17,6 +17,15 @@ const index = () => {
 
   const onViewClient = (id) => {
     navigate(`/client/${id}`);
+  };
+
+  const onEditClient = (id) => {
+    navigate(`/client/edit/${id}`);
+  };
+
+  const onDeleteClient = (id) => {
+    deleteClient(id);
+    setClients(clients.filter((client) => client.id !== id));
   };
 
   return (
@@ -54,8 +63,14 @@ const index = () => {
                       className="text-yellow-500 hover:text-yellow-600 cursor-pointer text-xl"
                       onClick={() => onViewClient(client.id)}
                     />
-                    <RiFileEditFill className="text-blue-500 hover:text-blue-700 cursor-pointer text-xl" />
-                    <AiFillDelete className="text-red-500 hover:text-red-700 cursor-pointer text-xl" />
+                    <RiFileEditFill
+                      className="text-blue-500 hover:text-blue-700 cursor-pointer text-xl"
+                      onClick={() => onEditClient(client.id)}
+                    />
+                    <AiFillDelete
+                      className="text-red-500 hover:text-red-700 cursor-pointer text-xl"
+                      onClick={() => onDeleteClient(client.id)}
+                    />
                   </div>
                 </td>
               </tr>
