@@ -35,20 +35,22 @@ const index = () => {
                 <span className="font-bold">Business: </span>
                 {client.business}
               </p>
-              <p className="text-xl mb-2 uppercase">
-                <span className="font-bold">Phone: </span>
-                {client.phone}
-              </p>
+              {client.phone && (
+                <p className="text-xl mb-2 uppercase">
+                  <span className="font-bold">Phone: </span>
+                  {client.phone}
+                </p>
+              )}
               <p className="text-xl mb-2 uppercase ">
                 <span className="font-bold">Email: </span>
                 {client.email}
               </p>
-              {client.notes ? (
+              {client.notes && (
                 <p className="text-xl mb-2 uppercase">
                   <span className="font-bold">Notes: </span>
                   {client.notes}
                 </p>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
