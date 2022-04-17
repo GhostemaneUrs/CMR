@@ -16,9 +16,9 @@ const index = () => {
     business: Yup.string().required(),
     email: Yup.string().email().required(),
     phone: Yup.number()
-      .max(10, "The phone number is too long")
       .positive()
       .integer()
+      .min(11, "The number must be 11 digits")
       .typeError("The phone number is not valid"),
   });
 
