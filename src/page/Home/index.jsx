@@ -29,7 +29,7 @@ const index = () => {
           </Link>
         </div>
       </div>
-      <div className="lg:w-3/4 p-10 scroll">
+      <div className="lg:w-3/4 p-5 lg:p-10 scroll">
         <Outlet />
       </div>
     </div>
