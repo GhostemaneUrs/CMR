@@ -22,6 +22,24 @@ export const addClient = async (values) => {
     });
 };
 
+export const getSpecificClient = async (id, setClient, setLoading) => {
+  setLoading(true);
+  await axios
+    .get(`http://localhost:4000/clients/${id}`)
+    .then((res) => {
+      setLoading(false);
+      setClient(res.data);
+    })
+    .catch((err) => {
+      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "There was an error getting the client",
+      });
+    });
+};
+
 export const getClients = async (setClients, setLoading) => {
   setLoading(true);
   await axios
