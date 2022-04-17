@@ -1,0 +1,12 @@
+{
+  "clients": [
+    {
+      "name": "Andrés Jaramillo González",
+      "business": "Akimad",
+      "email": "JaramilloG1999@outlook.com",
+      "phone": "3043512931",
+      "notes": "El cliente quiere una RTX 3090",
+      "id": 1
+    }
+  ]
+}
