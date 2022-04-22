@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 export const addClient = async (values) => {
   await axios
-    .post(import.meta.env.VITE_API_URL_PRODUCTION, values)
+    .post(import.meta.env.VITE_API_URL, values)
     .then((res) => {
       Swal.fire({
         timer: 1500,
@@ -24,7 +24,7 @@ export const addClient = async (values) => {
 
 export const editClient = async (id, values) => {
   await axios
-    .put(`${import.meta.env.VITE_API_URL_PRODUCTION}/${id}`, values)
+    .put(`${import.meta.env.VITE_API_URL}/${id}`, values)
     .then((res) => {
       Swal.fire({
         timer: 1500,
@@ -47,7 +47,7 @@ export const editClient = async (id, values) => {
 
 export const deleteClient = async (id) => {
   await axios
-    .delete(`${import.meta.env.VITE_API_URL_PRODUCTION}/${id}`)
+    .delete(`${import.meta.env.VITE_API_URL}/${id}`)
     .then((res) => {
       Swal.fire({
         timer: 1500,
@@ -71,7 +71,7 @@ export const deleteClient = async (id) => {
 export const getSpecificClient = async (id, setClient, setLoading) => {
   setLoading(true);
   await axios
-    .get(`${import.meta.env.VITE_API_URL_PRODUCTION}/${id}`)
+    .get(`${import.meta.env.VITE_API_URL}/${id}`)
     .then((res) => {
       setLoading(false);
       setClient(res.data);
@@ -84,7 +84,7 @@ export const getSpecificClient = async (id, setClient, setLoading) => {
 export const getClients = async (setClients, setLoading) => {
   setLoading(true);
   await axios
-    .get(import.meta.env.VITE_API_URL_PRODUCTION)
+    .get(import.meta.env.VITE_API_URL)
     .then((res) => {
       setLoading(false);
       setClients(res.data);
