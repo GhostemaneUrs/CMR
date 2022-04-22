@@ -38,46 +38,54 @@ const index = () => {
         <div>
           <h1 className="font-black text-4xl text-blue-900 mb-3">Clients</h1>
           <p className="mb-7 text-2xl">Manage your clients</p>
-          <table className="w-full table-auto shadow bg-white">
-            <thead className="bg-blue-900 text-white uppercase">
-              <tr>
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Business</th>
-                <th className="px-4 py-2">Email</th>
-                <th className="px-4 py-2">Phone</th>
-                <th className="px-4 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {clients.map((client) => (
-                <tr
-                  className="text-center border-b hover:bg-gray-50 cursor-pointer"
-                  key={client.id}
-                >
-                  <td className="p-3">{client.name}</td>
-                  <td className="p-3">{client.business}</td>
-                  <td className="p-3">{client.email}</td>
-                  <td className="p-3">{client.phone}</td>
-                  <td className="p-3">
-                    <div className="flex justify-center items-center">
-                      <HiEye
-                        className="text-yellow-500 hover:text-yellow-600 cursor-pointer text-xl"
-                        onClick={() => onViewClient(client.id)}
-                      />
-                      <RiFileEditFill
-                        className="text-blue-500 hover:text-blue-700 cursor-pointer text-xl"
-                        onClick={() => onEditClient(client.id)}
-                      />
-                      <AiFillDelete
-                        className="text-red-500 hover:text-red-700 cursor-pointer text-xl"
-                        onClick={() => onDeleteClient(client.id)}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="flex flex-col">
+            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div className="overflow-hidden">
+                  <table className="min-w-full table-auto shadow bg-white">
+                    <thead className="bg-blue-900 text-white uppercase">
+                      <tr>
+                        <th className="px-4 py-2">Name</th>
+                        <th className="px-4 py-2">Business</th>
+                        <th className="px-4 py-2">Email</th>
+                        <th className="px-4 py-2">Phone</th>
+                        <th className="px-4 py-2">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {clients.map((client) => (
+                        <tr
+                          className="text-center border-b hover:bg-gray-50 cursor-pointer"
+                          key={client.id}
+                        >
+                          <td className="p-3">{client.name}</td>
+                          <td className="p-3">{client.business}</td>
+                          <td className="p-3">{client.email}</td>
+                          <td className="p-3">{client.phone}</td>
+                          <td className="p-3">
+                            <div className="flex justify-center items-center">
+                              <HiEye
+                                className="text-yellow-500 hover:text-yellow-600 cursor-pointer text-xl"
+                                onClick={() => onViewClient(client.id)}
+                              />
+                              <RiFileEditFill
+                                className="text-blue-500 hover:text-blue-700 cursor-pointer text-xl"
+                                onClick={() => onEditClient(client.id)}
+                              />
+                              <AiFillDelete
+                                className="text-red-500 hover:text-red-700 cursor-pointer text-xl"
+                                onClick={() => onDeleteClient(client.id)}
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div>
