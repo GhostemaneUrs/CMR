@@ -20,33 +20,33 @@ const index = () => {
           <MoonLoader size={150} color={"#4f46e5"} loading={loading} />
         </div>
       ) : (
-        <div className="w-full lg:w-3/4 shadow-sm py-6 px-3 m-auto bg-white rounded">
+        <div className="w-full lg:w-3/4 shadow-sm py-6 m-auto bg-white rounded">
           <h1 className="text-2xl text-center uppercase font-bold mt-5">
             Details client
           </h1>
           <div className="flex flex-col xl:flex-row items-center gap-7">
             <img src={personalInfo} alt="personal-info" />
             <div className="p-4">
-              <p className="text-xl mb-2 uppercase">
+              <p className="md:text-xl mb-2 uppercase">
                 <span className="font-bold">Name: </span>
                 {client.name}
               </p>
-              <p className="text-xl mb-2 uppercase">
+              <p className="md:text-xl mb-2 uppercase">
                 <span className="font-bold">Business: </span>
                 {client.business}
               </p>
               {client.phone && (
-                <p className="text-xl mb-2 uppercase">
+                <p className="md:text-xl mb-2 uppercase">
                   <span className="font-bold">Phone: </span>
                   {client.phone}
                 </p>
               )}
-              <p className="text-xl mb-2 uppercase ">
+              <p className="md:text-xl mb-2 uppercase ">
                 <span className="font-bold">Email: </span>
                 {client.email}
               </p>
               {client.notes && (
-                <p className="text-xl mb-2 uppercase">
+                <p className="md:text-xl mb-2 uppercase">
                   <span className="font-bold">Notes: </span>
                   {client.notes}
                 </p>
